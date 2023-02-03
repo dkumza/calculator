@@ -1,2 +1,2 @@
 # calculator 
-### app for "the odin project"
+app for "the odin project"
