@@ -1,0 +1,158 @@
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* main css */
+
+#main-container {
+  border: 2px solid rebeccapurple;
+  /* max-width: 240px; */
+  display: flex;
+  justify-content: center;
+}
+
+#calc-container {
+  border: 2px solid green;
+  min-width: 360px;
+  max-width: 360px;
+  min-height: 490px;
+}
+
+#history-container {
+  margin-top: 45px;
+  /* border: 2px solid brown; */
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background-color: rgb(201, 201, 201);
+  min-height: 120px;
+  max-height: 120px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: stretch; */
+  /* justify-content: center; */
+}
+
+.history {
+  padding: 0 12px;
+  border: 1px solid red;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  /* display: flex;
+  align-items: stretch; */
+}
+
+#input-container {
+  border: 1px solid green;
+  min-height: 65px;
+  max-height: 65px;
+  padding: 0 12px;
+  padding-top: 12px;
+}
