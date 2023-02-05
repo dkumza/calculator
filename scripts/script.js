@@ -1,3 +1,13 @@
+const no_btns = document.querySelectorAll(".no");
+const display_txt = document.querySelector("#display-txt");
+const divide_btn = document.querySelector(".divide");
+const equal_btn = document.querySelector(".equal");
+
+let display_value = [];
+let btn_value = 0;
+let firstValue = 0;
+let secondValue = 0;
+
 // add
 let add = function (x, y) {
   return +x + +y;
@@ -15,7 +25,7 @@ let multiply = function (x, y) {
 
 // divide
 let divide = function (x, y) {
-  return x / y;
+  display_txt.textContent = x / y;
 };
 
 // enter operation values, 2 numbers and operator
@@ -44,4 +54,30 @@ let operate = function () {
   }
   alert("Please enter correct values!");
 };
-console.log(operate());
+// console.log(operate());
+
+// number buttons
+no_btns.forEach((button) => {
+  button.addEventListener("click", () => {
+    btn_value = button.textContent;
+    display_value.push(btn_value);
+    display_txt.textContent = display_value.join("");
+  });
+});
+
+// divide button
+divide_btn.addEventListener("click", () => {
+  btn_value = divide_btn.textContent;
+  firstValue = display_value.join("");
+  display_value = [];
+  display_txt.textContent = btn_value;
+});
+
+// equal button
+equal_btn.addEventListener("click", () => {
+  secondValue = display_value.join("");
+  divide(firstValue, secondValue);
+  display_value = [];
+});
+
+// display txt

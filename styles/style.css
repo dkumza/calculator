@@ -113,6 +113,7 @@ table {
 
 #main-container {
   border: 2px solid rebeccapurple;
+
   /* max-width: 240px; */
   display: flex;
   justify-content: center;
@@ -132,6 +133,7 @@ table {
 }
 
 #history-container {
+  color: white;
   background-color: #3f3f3f;
   margin-top: 45px;
   /* border: 2px solid brown; */
@@ -159,6 +161,7 @@ table {
 #input-container {
   /* border: 3px solid green; */
   background-color: #353535;
+  color: white;
   min-height: 48px;
   max-height: 48px;
   padding: 0 12px;
@@ -191,10 +194,10 @@ table {
 .key {
   /* outline: 1px solid red; */
   /* flex: 1; */
+  color: white;
   border-radius: 6px;
   border: none;
   background-color: #393939;
-  color: white;
   font-weight: 400;
   display: grid;
   justify-content: center;
