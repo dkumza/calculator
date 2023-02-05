@@ -69,8 +69,11 @@ no_btns.forEach((button) => {
 divide_btn.addEventListener("click", () => {
   btn_value = divide_btn.textContent;
   firstValue = display_value.join("");
-  display_value = [];
-  display_txt.textContent = btn_value;
+  console.log(firstValue);
+  display_value.push(btn_value);
+  // firstValue = display_value.join("");
+  // display_value = [];
+  display_txt.textContent = display_value.join("");
 });
 
 // equal button
