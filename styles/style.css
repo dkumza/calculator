@@ -191,7 +191,9 @@ table {
   grid-template-rows: repeat(5, auto);
   grid-gap: 5px;
 }
-.key {
+#key,
+#no,
+.oper {
   /* outline: 1px solid red; */
   /* flex: 1; */
   color: white;
@@ -204,20 +206,22 @@ table {
   align-items: center;
 }
 
-.key.no {
+#no {
   background-color: #505050;
   font-weight: 700;
 }
 
-.key.equal {
+#key.equal {
   background-color: #e66100;
   grid-column: 3/5;
 }
 
-.key:hover {
+#key:hover,
+#no:hover,
+.oper:hover {
   background-color: #5c5c5c;
 }
 
-.key.equal:hover {
+#key.equal:hover {
   background-color: #ff6a00;
 }

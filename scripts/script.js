@@ -1,12 +1,23 @@
 const no_btns = document.querySelectorAll(".no");
+const oper_btn = document.querySelectorAll(".oper");
 const display_txt = document.querySelector("#display-txt");
 const divide_btn = document.querySelector(".divide");
 const equal_btn = document.querySelector(".equal");
+const history1 = document.querySelector(".hi-1");
+// console.log(history1.textContent);
+
+// console.log(oper_btn);
 
 let display_value = [];
+let disp_val = 0;
 let btn_value = 0;
-let firstValue = 0;
-let secondValue = 0;
+let firstValue = "";
+let secondValue = "";
+let operValue = null;
+let result = "";
+
+// console.log("first:", firstValue, "second:", secondValue);
+// let i = 0;
 
 // add
 let add = function (x, y) {
@@ -25,7 +36,7 @@ let multiply = function (x, y) {
 
 // divide
 let divide = function (x, y) {
-  display_txt.textContent = x / y;
+  return +x / +y;
 };
 
 // enter operation values, 2 numbers and operator
@@ -59,28 +70,24 @@ let operate = function () {
 // number buttons
 no_btns.forEach((button) => {
   button.addEventListener("click", () => {
-    btn_value = button.textContent;
-    display_value.push(btn_value);
+    display_value.push(button.textContent);
     display_txt.textContent = display_value.join("");
   });
 });
 
-// divide button
-divide_btn.addEventListener("click", () => {
-  btn_value = divide_btn.textContent;
-  firstValue = display_value.join("");
-  console.log(firstValue);
-  display_value.push(btn_value);
-  // firstValue = display_value.join("");
-  // display_value = [];
-  display_txt.textContent = display_value.join("");
+// read operators
+oper_btn.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (firstValue == "") {
+      operValue = button.textContent;
+      firstValue = display_txt.textContent;
+      // display_txt.textContent = "";
+      display_value = [];
+      history1.textContent = firstValue + button.textContent;
+      console.log(firstValue);
+    } else if (secondValue == "") {
+      secondValue = display_txt.textContent;
+      console.log(secondValue);
+    }
+  });
 });
-
-// equal button
-equal_btn.addEventListener("click", () => {
-  secondValue = display_value.join("");
-  divide(firstValue, secondValue);
-  display_value = [];
-});
-
-// display txt
