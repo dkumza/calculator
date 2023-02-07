@@ -8,10 +8,11 @@ const history1 = document.querySelector(".hi-1");
 let first_value = "";
 let second_value = "";
 let oper_value = null;
-// let shouldResetScreen = false;
+let resetScreen = false;
 
 let resetApp = () => {
-  display_txt.textContent = "0";
+  display_txt.textContent = "";
+  resetScreen = false;
 };
 
 equal_btn.addEventListener("click", () => {
@@ -21,9 +22,9 @@ equal_btn.addEventListener("click", () => {
 // number buttons (0-9)
 num_btns.forEach((button) => {
   button.addEventListener("click", () => {
-    // if (display_txt.textContent === "0") {
-    //   resetApp();
-    // }
+    if (display_txt.textContent === "0" || resetScreen) {
+      resetApp();
+    }
     joinNumbers(button.textContent);
   });
 });
@@ -38,7 +39,7 @@ oper_btn.forEach((button) => {
 // fill display with numbers that are pressed
 let joinNumbers = (num_value) => {
   if (display_txt.textContent === "0") {
-    // resetApp();
+    resetApp();
   }
   display_txt.textContent += num_value;
 };
@@ -51,13 +52,14 @@ let selectOperator = (operator) => {
   first_value = display_txt.textContent;
   oper_value = operator;
   history1.textContent = `${first_value} ${oper_value}`;
-  display_txt.textContent = "";
+  resetScreen = true;
+  // display_txt.textContent = "";
   // resetApp();
 };
 
 // count 2 numbers with operator
 let evaluate = () => {
-  if (oper_value === null) {
+  if (oper_value === null || resetScreen) {
     return;
   }
   second_value = display_txt.textContent;
