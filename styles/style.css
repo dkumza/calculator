@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 /* http://meyerweb.com/eric/tools/css/reset/ */
 /* v1.0 | 20080212 */
 
@@ -112,66 +114,55 @@ table {
 /* main css */
 
 #main-container {
-  border: 2px solid rebeccapurple;
-
-  /* max-width: 240px; */
+  font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #calc-container {
-  /* border: 5px solid red; */
   background-color: #242424;
-  min-width: 360px;
-  max-width: 360px;
-  min-height: 490px;
+  border-radius: 6px;
+  min-width: 300px;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  /* justify-content: stretch; */
 }
 
 #history-container {
   color: white;
   background-color: #3f3f3f;
   margin-top: 45px;
-  /* border: 2px solid brown; */
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  /* background-color: rgb(201, 201, 201); */
-  min-height: 120px;
-  max-height: 120px;
+  min-height: 40px;
+  max-height: 40px;
   display: flex;
   flex-direction: column;
-  /* align-items: stretch; */
-  /* justify-content: center; */
 }
 
 .history {
   padding: 0 12px;
-  /* border: 1px solid red; */
   flex: 1;
   display: flex;
   align-items: center;
-  /* display: flex;
-  align-items: stretch; */
+  justify-content: end;
 }
 
 #input-container {
-  /* border: 3px solid green; */
+  font-size: 24px;
+  font-weight: 500;
   background-color: #353535;
   color: white;
-  min-height: 48px;
-  max-height: 48px;
+  min-height: 64px;
+  max-height: 64px;
   padding: 0 12px;
-  padding-top: 12px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 #keyb-main {
-  /* display: flex; */
-  /* flex: 1; */
-  /* justify-content: center;
-  align-items: center; */
   flex: 1;
   display: flex;
   justify-content: center;
@@ -180,7 +171,6 @@ table {
 
 #keyb-container {
   flex: 1;
-  /* border: 3px solid peru; */
   background-color: #242424;
   margin: 3px 3px;
   padding: 3px;
@@ -194,8 +184,6 @@ table {
 #key,
 #no,
 .oper {
-  /* outline: 1px solid red; */
-  /* flex: 1; */
   color: white;
   border-radius: 6px;
   border: none;
@@ -225,3 +213,4 @@ table {
 #key.equal:hover {
   background-color: #ff6a00;
 }
+

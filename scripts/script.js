@@ -1,93 +1,103 @@
-const no_btns = document.querySelectorAll(".no");
+const num_btns = document.querySelectorAll(".no");
 const oper_btn = document.querySelectorAll(".oper");
 const display_txt = document.querySelector("#display-txt");
 const divide_btn = document.querySelector(".divide");
 const equal_btn = document.querySelector(".equal");
 const history1 = document.querySelector(".hi-1");
-// console.log(history1.textContent);
 
-// console.log(oper_btn);
+let first_value = "";
+let second_value = "";
+let oper_value = null;
+// let shouldResetScreen = false;
 
-let display_value = [];
-let disp_val = 0;
-let btn_value = 0;
-let firstValue = "";
-let secondValue = "";
-let operValue = null;
-let result = "";
-
-// console.log("first:", firstValue, "second:", secondValue);
-// let i = 0;
-
-// add
-let add = function (x, y) {
-  return +x + +y;
+let resetApp = () => {
+  display_txt.textContent = "0";
 };
 
-// subtract
-let subtract = function (x, y) {
-  return +x - +y;
-};
+equal_btn.addEventListener("click", () => {
+  evaluate();
+});
 
-// multiply
-let multiply = function (x, y) {
-  return +x * +y;
-};
-
-// divide
-let divide = function (x, y) {
-  return +x / +y;
-};
-
-// enter operation values, 2 numbers and operator
-let operate = function () {
-  let x = prompt("first number:");
-  let y = prompt("second number:");
-  let operator = prompt(
-    "enter one of operator (add, subtract, multiply, divide):"
-  );
-  // result
-  if (operator == "add") {
-    let result = add(x, y);
-    alert(`${x} + ${y} = ${result}`);
-  }
-  if (operator == "subtract") {
-    let result = subtract(x, y);
-    alert(`${x} - ${y} = ${result}`);
-  }
-  if (operator == "multiply") {
-    let result = multiply(x, y);
-    alert(`${x} * ${y} = ${result}`);
-  }
-  if (operator == "divide") {
-    let result = divide(x, y);
-    alert(`${x} / ${y} = ${result}`);
-  }
-  alert("Please enter correct values!");
-};
-// console.log(operate());
-
-// number buttons
-no_btns.forEach((button) => {
+// number buttons (0-9)
+num_btns.forEach((button) => {
   button.addEventListener("click", () => {
-    display_value.push(button.textContent);
-    display_txt.textContent = display_value.join("");
+    // if (display_txt.textContent === "0") {
+    //   resetApp();
+    // }
+    joinNumbers(button.textContent);
   });
 });
 
-// read operators
+// operator buttons (+ -...)
 oper_btn.forEach((button) => {
   button.addEventListener("click", () => {
-    if (firstValue == "") {
-      operValue = button.textContent;
-      firstValue = display_txt.textContent;
-      // display_txt.textContent = "";
-      display_value = [];
-      history1.textContent = firstValue + button.textContent;
-      console.log(firstValue);
-    } else if (secondValue == "") {
-      secondValue = display_txt.textContent;
-      console.log(secondValue);
-    }
+    selectOperator(button.textContent);
   });
 });
+
+// fill display with numbers that are pressed
+let joinNumbers = (num_value) => {
+  if (display_txt.textContent === "0") {
+    // resetApp();
+  }
+  display_txt.textContent += num_value;
+};
+
+// get operator
+let selectOperator = (operator) => {
+  if (oper_value !== null) {
+    evaluate();
+  }
+  first_value = display_txt.textContent;
+  oper_value = operator;
+  history1.textContent = `${first_value} ${oper_value}`;
+  display_txt.textContent = "";
+  // resetApp();
+};
+
+// count 2 numbers with operator
+let evaluate = () => {
+  if (oper_value === null) {
+    return;
+  }
+  second_value = display_txt.textContent;
+  display_txt.textContent = operate(oper_value, first_value, second_value);
+  history1.textContent = `${first_value} ${oper_value} ${second_value} =`;
+  oper_value = null;
+  // console.log(second_value);
+};
+
+// operate depends on entered value by user
+let operate = (operator, x, y) => {
+  x = +x;
+  y = +y;
+  switch (operator) {
+    case "+":
+      return add(x, y);
+    case "-":
+      return subtract(x, y);
+    case "*":
+      return multiply(x, y);
+    case "÷":
+      if (y === 0) return null;
+      else return divide(x, y);
+    default:
+      return null;
+  }
+};
+// add
+let add = (x, y) => {
+  return x + y;
+};
+// subtract
+let subtract = (x, y) => {
+  return x - y;
+};
+// multiply
+let multiply = (x, y) => {
+  return x * y;
+};
+// divide
+let divide = (x, y) => {
+  return +x / +y;
+};
