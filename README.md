@@ -1,2 +1,5 @@
 # calculator 
-app for "the odin project"
+simple calculator app with:
+* HTML
+* CSS
+* JavaScript
