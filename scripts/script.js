@@ -3,17 +3,53 @@ const oper_btn = document.querySelectorAll(".oper");
 const display_txt = document.querySelector("#display-txt");
 const divide_btn = document.querySelector(".divide");
 const equal_btn = document.querySelector(".equal");
-const history1 = document.querySelector(".hi-1");
+const clear_btn = document.querySelector(".clear-btn");
+const del_btn = document.querySelector(".del-btn");
+const dot_btn = document.querySelector(".dot-btn");
+const second_display_txt = document.querySelector(".hi-1");
 
 let first_value = "";
 let second_value = "";
 let oper_value = null;
 let resetScreen = false;
 
+let delSymbol = () => {
+  display_txt.textContent = display_txt.textContent.slice(0, -1);
+  if (display_txt.textContent == "") {
+    display_txt.textContent = "0";
+  }
+};
+
+let clearAll = () => {
+  display_txt.textContent = "0";
+  second_display_txt.textContent = "";
+  first_value = "";
+  second_value = "";
+  oper_value = null;
+};
+
 let resetApp = () => {
   display_txt.textContent = "";
   resetScreen = false;
 };
+
+let addDot = () => {
+  if (display_txt.textContent.includes(".")) {
+    dot_btn.disable = true;
+  } else display_txt.textContent += ".";
+};
+
+dot_btn.addEventListener("click", () => {
+  addDot();
+});
+
+del_btn.addEventListener("click", () => {
+  delSymbol();
+});
+
+clear_btn.addEventListener("click", () => {
+  clearAll();
+});
 
 equal_btn.addEventListener("click", () => {
   evaluate();
@@ -51,10 +87,8 @@ let selectOperator = (operator) => {
   }
   first_value = display_txt.textContent;
   oper_value = operator;
-  history1.textContent = `${first_value} ${oper_value}`;
+  second_display_txt.textContent = `${first_value} ${oper_value}`;
   resetScreen = true;
-  // display_txt.textContent = "";
-  // resetApp();
 };
 
 // count 2 numbers with operator
@@ -63,10 +97,20 @@ let evaluate = () => {
     return;
   }
   second_value = display_txt.textContent;
-  display_txt.textContent = operate(oper_value, first_value, second_value);
-  history1.textContent = `${first_value} ${oper_value} ${second_value} =`;
-  oper_value = null;
-  // console.log(second_value);
+  if (first_value === "0" || (second_value === "0" && oper_value === "÷")) {
+    display_txt.textContent = "can't divide by 0!";
+    setTimeout(clearAll, 1333);
+  } else {
+    display_txt.textContent = roundNumber(
+      operate(oper_value, first_value, second_value)
+    );
+    second_display_txt.textContent = `${first_value} ${oper_value} ${second_value} =`;
+    oper_value = null;
+  }
+};
+
+let roundNumber = (number) => {
+  return Math.round(number * 10000) / 10000;
 };
 
 // operate depends on entered value by user
@@ -78,7 +122,7 @@ let operate = (operator, x, y) => {
       return add(x, y);
     case "-":
       return subtract(x, y);
-    case "*":
+    case "×":
       return multiply(x, y);
     case "÷":
       if (y === 0) return null;

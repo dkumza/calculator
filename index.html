@@ -8,6 +8,10 @@
       src="https://kit.fontawesome.com/13b49633ca.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="styles/style.css" />
 
     <script src="scripts/script.js" defer></script>
@@ -18,6 +22,9 @@
       <div id="calc-container">
         <div id="screen-container">
           <div id="history-container">
+            <button id="history-btn">
+              <i class="bi bi-arrow-counterclockwise"></i>
+            </button>
             <p class="history hi-1"></p>
           </div>
           <div id="input-container">
@@ -26,14 +33,15 @@
         </div>
         <div id="keyb-main">
           <div id="keyb-container">
-            <button id="key" class="test">DEL</button>
-            <button id="key" class="test">C</button>
-            <button id="key" class="test">%</button>
+            <button id="key" class="clear-btn">CLEAR</button>
+            <button id="key" class="del-btn">
+              <i class="bi bi-backspace"></i>
+            </button>
             <button id="divide" class="oper">÷</button>
             <button id="no" class="no">7</button>
             <button id="no" class="no">8</button>
             <button id="no" class="no">9</button>
-            <button id="multiply" class="oper">*</button>
+            <button id="multiply" class="oper">×</button>
             <button id="no" class="no">4</button>
             <button id="no" class="no">5</button>
             <button id="no" class="no">6</button>
@@ -43,7 +51,7 @@
             <button id="no" class="no">3</button>
             <button id="add" class="oper">+</button>
             <button id="no" class="no">0</button>
-            <button id="key" class="test">.</button>
+            <button id="key" class="dot-btn">.</button>
             <button id="key" class="equal">=</button>
           </div>
         </div>
