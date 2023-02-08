@@ -5,4 +5,4 @@ Simple calculator app with:
 * JavaScript
 
 TODO:
-[] add history button, to show history of calculated operations
+[ ] add history button, to show history of calculated operations
