@@ -240,6 +240,7 @@ table {
 }
 
 #history-btn {
+  display: none;
   margin-left: 6px;
   width: 30px;
   height: 30px;
