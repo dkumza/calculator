@@ -16,7 +16,6 @@ let resetScreen = false;
 let delSymbol = () => {
   display_txt.textContent = display_txt.textContent.slice(0, -1);
   if (display_txt.textContent == "") {
-    display_txt.textContent = "0";
   }
 };
 
@@ -74,7 +73,7 @@ oper_btn.forEach((button) => {
 
 // fill display with numbers that are pressed
 let joinNumbers = (num_value) => {
-  if (display_txt.textContent === "0") {
+  if (display_txt.textContent === "0" || resetScreen) {
     resetApp();
   }
   display_txt.textContent += num_value;
@@ -97,10 +96,14 @@ let evaluate = () => {
     return;
   }
   second_value = display_txt.textContent;
-  if (first_value === "0" || (second_value === "0" && oper_value === "÷")) {
+  if (
+    first_value === "0" ||
+    (display_txt.textContent === "0" && oper_value === "÷")
+  ) {
     display_txt.textContent = "can't divide by 0!";
     setTimeout(clearAll, 1333);
   } else {
+    second_value = display_txt.textContent;
     display_txt.textContent = roundNumber(
       operate(oper_value, first_value, second_value)
     );
@@ -111,6 +114,43 @@ let evaluate = () => {
 
 let roundNumber = (number) => {
   return Math.round(number * 10000) / 10000;
+};
+
+// keyboard support
+document.addEventListener("keydown", (e) => {
+  if (e.key >= 0 && e.key <= 9) {
+    joinNumbers(e.key);
+  }
+  if (e.key === ".") {
+    addDot();
+  }
+  if (e.key === "=" || e.key === "Enter") {
+    evaluate();
+  }
+  if (e.key === "Backspace") {
+    delSymbol();
+  }
+  if (e.key === "Escape") {
+    resetApp();
+  }
+  if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
+    selectOperator(convertOperator(e.key));
+  }
+});
+
+let convertOperator = (keyVal) => {
+  if (keyVal === "/") {
+    return "÷";
+  }
+  if (keyVal === "*") {
+    return "×";
+  }
+  if (keyVal === "-") {
+    return "-";
+  }
+  if (keyVal === "+") {
+    return "+";
+  }
 };
 
 // operate depends on entered value by user
