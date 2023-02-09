@@ -8,6 +8,6 @@ Simple calculator app with:
 
 TODO:
 
-- [ ] keyboard support
-- [ ] add light theme?
+- [x] keyboard support
+- [x] add light theme?
 - [ ] add history button, to show history of calculated operations

@@ -1,3 +1,4 @@
+const frame_cont = document.querySelector("#calc-container");
 const num_btns = document.querySelectorAll(".no");
 const oper_btn = document.querySelectorAll(".oper");
 const display_txt = document.querySelector("#display-txt");
@@ -7,11 +8,27 @@ const clear_btn = document.querySelector(".clear-btn");
 const del_btn = document.querySelector(".del-btn");
 const dot_btn = document.querySelector(".dot-btn");
 const second_display_txt = document.querySelector(".hi-1");
+const theme_btn = document.querySelector(".switch-btn");
+const to_switch_theme = document.querySelector(".switch");
+const toggle = document.querySelector(".toggle-input");
 
 let first_value = "";
 let second_value = "";
 let oper_value = null;
 let resetScreen = false;
+
+// dark / light theme switcher
+let toggleTheme = () => {
+  // Toggle theme based on state of checkbox
+  if (toggle.checked) {
+    to_switch_theme.classList.replace("light-mode", "dark-mode");
+  } else {
+    to_switch_theme.classList.replace("dark-mode", "light-mode");
+  }
+};
+
+// Toggle theme any time the state of the checkbox changes
+toggle.addEventListener("change", toggleTheme);
 
 let delSymbol = () => {
   display_txt.textContent = display_txt.textContent.slice(0, -1);
