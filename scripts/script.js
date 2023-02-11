@@ -17,7 +17,23 @@ let second_value = "";
 let oper_value = null;
 let resetScreen = false;
 
-// dark / light theme switcher
+// SHOW TRANSITION ON KEYDOWN
+
+window.addEventListener("keydown", function (e) {
+  const keyDown = document.querySelector(`.btn[data-key="${e.key}"]`);
+  if (!keyDown) return;
+  keyDown.classList.add("pressed");
+});
+
+function removeTransition(e) {
+  if (e.type !== "transitionend") return;
+  e.target.classList.remove("pressed");
+}
+
+const keys = document.querySelectorAll(".btn");
+keys.forEach((btn) => btn.addEventListener("transitionend", removeTransition));
+
+// THEME SWITCHER
 let toggleTheme = () => {
   // Toggle theme based on state of checkbox
   if (toggle.checked) {
@@ -39,6 +55,7 @@ let delSymbol = () => {
 let clearAll = () => {
   display_txt.textContent = "0";
   second_display_txt.textContent = "";
+  console.log(second_display_txt);
   first_value = "";
   second_value = "";
   oper_value = null;

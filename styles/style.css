@@ -132,8 +132,8 @@ table {
   --operators-bg: #393939;
   --numbers-bg: #505050;
   --equal-bg: #6da9d8;
-  --equal-hover:#6196be;
-  --hover: #535353;
+  --equal-hover:#39566c;
+  --hover: #000000;
 }
 
 #main-container {
@@ -148,8 +148,8 @@ table {
   background-color: var(--main-bg);
   border: 1px solid var(--border-color);
   margin-top: 12px;
-  min-width: 280px;
-  max-width: 280px;
+  min-width: 250px;
+  max-width: 250px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -164,8 +164,7 @@ table {
   align-items: center;
 }
 
-.history {
-  
+.history {  
   font-size: 14px;
   padding: 0 12px;
   flex: 1;
@@ -204,38 +203,39 @@ table {
   grid-template-rows: repeat(5, minmax(0, 1fr));
   grid-gap: 2px;
 }
-#key,
-#no,
-.oper, #history-btn,
+.btn,
 .toggle {
   color: var(--text);
   border-radius: 3px;
   border: 1px solid;
   border-color: var(--border-color);
-  background-color: var(--operators-bg);
+  background-color: var(--numbers-bg);
   font-weight: 400;
   display: grid;
   justify-content: center;
   align-items: center;
 }
-
-#no {  
-  background-color: var(--numbers-bg);
-  font-weight: 700;
+.oper,
+.del-btn,
+.clear-btn,
+.toggle {
+  color: var(--text);
+  background-color: var(--operators-bg);
 }
 
-#key.equal {
+.equal {
   background-color: var(--equal-bg);
   grid-column: 3/5;
 }
 
-#key:hover,
-#no:hover,
-.oper:hover {
+.btn:hover,
+.toggle:hover,
+.clear-btn:hover {
+  /* transition: all 0.5s; */
   background-color: var(--hover);
 }
 
-#key.equal:hover {
+.equal:hover {
   background-color: var(--equal-hover);
 }
 
@@ -275,3 +275,7 @@ table {
   user-select: none;
 }
 
+.pressed {
+  background-color: var(--hover);
+  transition: all 0.1s;
+}
