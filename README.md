@@ -10,5 +10,5 @@ TODO:
 
 - [x] keyboard support
 - [x] add light theme?
-- [x] hover on keypress (keyboard)
+- [x] transition on keydown
 - [ ] add history button, to show history of calculated operations
