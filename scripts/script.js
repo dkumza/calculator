@@ -49,6 +49,7 @@ toggle.addEventListener("change", toggleTheme);
 let delSymbol = () => {
   display_txt.textContent = display_txt.textContent.slice(0, -1);
   if (display_txt.textContent == "") {
+    display_txt.textContent = "0";
   }
 };
 
