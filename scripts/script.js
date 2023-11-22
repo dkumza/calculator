@@ -132,7 +132,7 @@ let evaluate = () => {
   }
   second_value = display_txt.textContent;
   if (
-    first_value === "0" ||
+    first_value === "0" &&
     (display_txt.textContent === "0" && oper_value === "÷")
   ) {
     display_txt.textContent = "can't divide by 0!";
